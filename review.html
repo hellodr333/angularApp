@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html ng-app="gemStore">
+<head>
+	<meta charset="utf-8">
+	<title>gemStore</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	
+</head>
+<body ng-controller="StoreController as store">
+	<!-- product container -->
+	<div class="list-group" style="width:50%">
+		<div ng-repeat="product in store.products | orderBy:'-price'">  
+			<div ng-hide="product.soldOut" ng-controller="GalleryController as gallery">
+				<h3>
+					{{product.name}}
+					<em class="pull-right">{{product.price | currency}}</em>
+				</h3>
+				<!-- image gallery -->
+				<div>
+					<img ng-src="{{product.images[gallery.num]}}" width="100" />
+				</div>
+				<span ng-repeat="image in product.images">
+					<img ng-src="{{image}}" ng-click="gallery.setNum(product.images.indexOf(image))" width="60" />
+				</span>
+				<p>上架时间 &nbsp;&nbsp;{{product.sellTime | date:"MM/dd/yyyy"}}</p>
+				<button ng-show="product.canPurchase">加购物车</button>
+			</div>
+			  <!-- tab container-->
+			<div class="tab" ng-controller="TabController as tabs">
+				<ul class="nav nav-pills">
+					<li ng-class="{active:tabs.isSet(1)}">
+						<a href="" ng-click="tabs.setTab(1)">产品描述</a>
+					</li>
+					<li ng-class="{active:tabs.isSet(2)}">
+						<a href="" ng-click="tabs.setTab(2)">规格</a>
+					</li>
+					<li ng-class='{active:tabs.isSet(3)}'> 
+						<a href="" ng-click="tabs.setTab(3)">评论</a>
+					</li>
+				</ul>
+				<!-- description content -->
+				<div ng-show="tabs.isSet(1)">
+					<h4>产品描述:{{product.description}}</h4>
+				</div>
+				<!-- speci content -->
+				<div ng-show="tabs.isSet(2)">
+					<h4>光泽度:{{product.shine}}</h4>
+				</div>
+				<!-- review content -->
+				<div ng-show="tabs.isSet(3)">
+					<h4>评论</h4>
+					<ul>
+						<li ng-repeat="review in product.reviews">
+							<blockquote>
+								<strong> {{review.stars}} &nbsp;&nbsp;stars</strong>
+	                            {{review.body}}
+								<cite>---{{review.author}}</cite>
+							</blockquote>
+						</li>
+					</ul>
+					<!-- review form -->
+					<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+						<!-- live review -->
+						<blockquote>
+							<strong>{{reviewCtrl.review.stars}} &nbsp;&nbsp;stars</strong>
+							{{reviewCtrl.review.body}}
+							<cite>---{{reviewCtrl.review.author}}</cite>
+						</blockquote>
+
+						<!-- review form content -->
+						<h3>提交评论</h3>
+						<fieldset class="form-group">
+			                <select ng-model="reviewCtrl.review.stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars">
+			                	  <option value="">请打分</option>
+			                </select>
+		                </fieldset>
+		              <fieldset class="form-group">
+		                	<textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="请输入评论" title="Review"></textarea>
+		              </fieldset>
+		              <fieldset class="form-group">
+		                	<input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@163.com" title="Email" />
+		              </fieldset>
+		              <fieldset class="form-group">
+		               		<input type="submit" class="btn btn-primary pull-right" value="提交评论" />
+		              </fieldset>
+
+
+					</form>	
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript" src="js/angular.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

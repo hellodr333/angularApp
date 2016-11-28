@@ -1,0 +1,35 @@
+<section>
+	<ul class="nav nav-pills">
+					<li ng-class="{active:tabs.isSet(1)}">
+						<a href="" ng-click="tabs.setTab(1)">产品描述</a>
+					</li>
+					<li ng-class="{active:tabs.isSet(2)}">
+						<a href="" ng-click="tabs.setTab(2)">规格</a>
+					</li>
+					<li ng-class='{active:tabs.isSet(3)}'> 
+						<a href="" ng-click="tabs.setTab(3)">评论</a>
+					</li>
+				</ul>
+				<!-- description content -->
+				<!-- 方法1 直接用 ng-include -->
+				<!-- <div ng-show="tabs.isSet(1)" ng-include="'product-description.html'">
+					
+				</div> -->
+				<!-- 方法2 自定义指令 类型 元素-->
+				
+				<product-description ng-show="tabs.isSet(1)">
+				
+				</product-description>
+				
+				
+				<!-- speci content -->
+
+				<!-- 方法2 自定义指令 类型 属性-->
+				<div ng-show="tabs.isSet(2)" product-specs>
+
+				</div>
+				<!-- review content -->
+				<div ng-show="tabs.isSet(3)" product-review>
+					
+				</div>
+</section>

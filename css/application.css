@@ -1,0 +1,14 @@
+/*清除默认样式*/
+body{font-size:12px;font-family:"Times New Roman",Georgia,Serif;}
+li{list-style:none;}
+
+/*
+
+表单元素  输入前 class 为 ng-pristine 和 ng-invalid
+         输入时 class 为 ng-dirty 和 ng-invalid
+         输入正确后 class为 ng-dirty 和 ng-valid
+
+
+*/
+.ng-dirty.ng-invalid{border-color:red;}
+.ng-dirty.ng-valid{border-color:green;}

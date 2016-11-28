@@ -1,0 +1,8 @@
+<div >
+		<div>
+			<img ng-src="{{product.images[gallery.num]}}" width="100" />
+		</div>
+		<span ng-repeat="image in product.images">
+			<img ng-src="{{image}}" ng-click="gallery.setNum(product.images.indexOf(image))" width="60" />
+		</span>
+</div>

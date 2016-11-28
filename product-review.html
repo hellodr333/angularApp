@@ -1,0 +1,39 @@
+<h4>评论</h4>
+					<ul>
+						<li ng-repeat="review in product.reviews">
+							<blockquote>
+								<strong> {{review.stars}} &nbsp;&nbsp;stars</strong>
+	                            {{review.body}}
+								<cite>---{{review.author}} on {{review.createdOn | date:"MM/dd/yyyy"}}</cite>
+							</blockquote>
+						</li>
+					</ul>
+					<!-- review form -->
+					<form name="reviewForm" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" >
+						<!-- live review -->
+						<blockquote>
+							<strong>{{reviewCtrl.review.stars}} &nbsp;&nbsp;stars</strong>
+							{{reviewCtrl.review.body}}
+							<cite>---{{reviewCtrl.review.author}}</cite>
+						</blockquote>
+
+						<!-- review form content -->
+
+						<h3>提交评论</h3>
+						<fieldset class="form-group">
+			                <select ng-model="reviewCtrl.review.stars" name="stars" class="form-control" ng-options="stars for stars in [5,4,3,2,1]" title="Stars" required>
+			                	  <option value="">请打分</option>
+			                </select>
+		                </fieldset>
+		              <fieldset class="form-group">
+		                	<textarea ng-model="reviewCtrl.review.body" class="form-control" placeholder="请输入评论" title="Review" required></textarea>
+		              </fieldset>
+		              <fieldset class="form-group">
+		                	<input ng-model="reviewCtrl.review.author" type="email" class="form-control" placeholder="jimmyDean@163.com" title="Email" required/>
+		              </fieldset>
+		              <fieldset class="form-group">
+		               		<input type="submit" class="btn btn-primary pull-right" value="提交评论" />
+		              </fieldset>
+						<!-- <div>qq{{reviewForm.$valid}}</div> -->
+
+					</form>	
