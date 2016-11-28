@@ -41,7 +41,9 @@
 			soldOut:false,
 			images:[
 				"img/pinkGem1.jpg",
-				"img/pinkGem2.jpg"
+				"img/pinkGem2.jpg",
+				"img/pinkGem3.jpg",
+				"img/pinkGem4.jpg"
 			],
 			sellTime:(new Date()).getTime(),
 			reviews:[
@@ -73,7 +75,9 @@
 			soldOut:false,
 			images:[
 				"img/yellowGem1.jpg",
-				"img/yellowGem2.jpg"
+				"img/yellowGem2.jpg",
+				"img/yellowGem3.jpg",
+				"img/yellowGem4.jpg"
 			],
 			sellTime:"1480045396228",
 			reviews:[
@@ -97,7 +101,9 @@
 			soldOut:false,
 			images:[
 				"img/redGem1.jpg",
-			    "img/redGem2.jpg"
+			    "img/redGem2.jpg",
+			    "img/redGem3.jpg",
+			    "img/redGem4.jpg"
 			],
 			sellTime:"1480045396228",
 			reviews:[
