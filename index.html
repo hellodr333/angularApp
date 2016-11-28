@@ -9,7 +9,7 @@
 </head>
 <body ng-controller="StoreController as store">
 	<!-- product container -->
-	<div class="list-group" style="width:50%">
+	<div class="list-group" style="width:50%;margin-left:25%;">
 		<div ng-repeat="product in store.products | orderBy:'-price'">  
 			<div ng-hide="product.soldOut">
 				<h3>
@@ -24,6 +24,7 @@
 			  <!-- tab container-->
 			<product-tabs>
 			</product-tabs>
+			<hr/>
 		</div>
 	</div>
 
